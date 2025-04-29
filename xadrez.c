@@ -1,71 +1,49 @@
 #include <stdio.h>
 
-int main() {
-
-int torre = 1;
-
-int rainha = 1;
-
-int bispo = 1;
-int bispomov;
-char bispodir;
-
-int cavalo;
-
-int i = 1;
-printf("quantas casa na diagonal vc quer q seu bispo ande?\n");
-scanf("%d", &bispomov);
-
-printf("em qual direção?\ndireita = D\nesquerda = E \n");
-scanf("%c \n", &bispodir);
-
-if (bispodir = 'D')
-{
-    while (bispo <= bispomov)
+void moverbispo(int casa){
+    if (casa > 0)
     {
-    printf("Bispo se movel para cima, Direita \n");
-    bispo ++;
-    } 
-}else if (bispodir = 'E')
-{
-    while (bispo <= bispomov)
+        moverbispo(casa - 1);
+        printf("Cima, direita\n");
+    }
+    
+}
+void movertorre(int casa){
+    if (casa > 0)
     {
-    printf("Bispo se movel para cima, Esquerda \n");
-    bispo ++;
-    } 
+        movertorre(casa - 1);
+        printf("Direita\n");
+    }
+}
+void moverrainha(int casa){
+    if (casa > 0)
+    {
+        moverrainha(casa - 1);
+        printf("Esquerda\n");
+    }
+        
 }
 
 
-/*     while (bispo <= bispomov)
+int main(){
+
+    printf("Movimento do Bispo:\n");
+    moverbispo(5);
+
+    printf("Movimento da Torre:\n");
+    movertorre(5);
+
+    printf("Movimento da Rainha: \n");
+    moverrainha(8);
+
+    printf("Movimento do Cavalo:\n");
+    for (int cavalo = 0; cavalo < 1; cavalo++)
     {
-    printf("Bispo se movel para cima, %c \n", bispodir);
-    bispo ++;
-    }
-*/
-
-    for (int torre = 0; torre < 5; torre++)
-    {
-    printf("torre foi direita\n");
-    }
-
-
-    do
-    {
-    printf("rainha andou para direita\n");
-    rainha ++;
-    }   while (rainha <= 8); 
-
-
-
-    for(cavalo = 0; cavalo < 1; cavalo++)
-    {
-        for(i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
-        printf("cima\n");
+            printf("Cima\n");
         }
-    printf("direita");
+        printf("Esquerda\n");
     }
-
-
-return 0;
+    
 }
